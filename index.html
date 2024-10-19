@@ -1,0 +1,931 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Money Magnet</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Helvetica:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Montserrat", sans-serif;
+      }
+
+      body {
+        background-color: #f5f5f5;
+      }
+
+      .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background-color: #fff;
+        padding: 1rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+      }
+
+      .logo {
+        height: 40px;
+        margin-left: 10px;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+      }
+
+      .nav-links a {
+        text-decoration: none;
+
+        font-weight: bold;
+        transition: color 0.3s ease;
+      }
+
+      .nav-links a:hover {
+        color: #ff6b00;
+      }
+
+      .join-us-btn {
+        background-color: #000;
+        color: #fff;
+        padding: 0.5rem 1rem;
+        border-radius: 25px;
+        text-decoration: none;
+        font-weight: bold;
+        transition: background-color 0.3s ease;
+      }
+
+      .join-us-btn:hover {
+        background-image: linear-gradient(45deg, #ff6b00, #ff9900);
+      }
+
+      .hamburger {
+        display: none;
+        cursor: pointer;
+      }
+
+      .bar {
+        display: block;
+        width: 25px;
+        height: 3px;
+        margin: 5px auto;
+        transition: all 0.3s ease-in-out;
+        background-color: #333;
+      }
+
+      @media (max-width: 768px) {
+        .hamburger {
+          display: block;
+        }
+
+        .nav-links {
+          position: fixed;
+          left: -100%;
+          top: 70px;
+          gap: 0;
+          flex-direction: column;
+          background-color: #fff;
+          width: 100%;
+          text-align: center;
+          transition: 0.3s;
+          box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+        }
+
+        .nav-links.active {
+          left: 0;
+        }
+
+        .nav-links a {
+          margin: 16px 0;
+        }
+      }
+
+      .main-content {
+        max-width: 1200px;
+        margin: 100px auto 0;
+        padding: 2rem;
+      }
+
+      .hero {
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+        margin-bottom: 3rem;
+      }
+
+      .hero-text {
+        flex: 1;
+        margin-bottom: 50px;
+      }
+
+      .hero-image {
+        flex: 1;
+        max-width: 50%;
+        margin-top: 50px;
+        margin-bottom: 50px;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      h1 {
+        font-family: "Montserrat", sans-serif;
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        background: linear-gradient(45deg, #d03202, #ffb310);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      h2 {
+        font-family: "Lato", sans-serif;
+        font-size: 2.5rem;
+        font-weight: 700;
+      }
+
+      p {
+        margin-bottom: 30px;
+      }
+
+      .cta-buttons {
+        display: flex;
+        gap: 1rem;
+        margin-top: 0.5rem;
+      }
+
+      .cta-btn {
+        padding: 0.75rem 1.5rem;
+        border-radius: 25px;
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: bold;
+        transition: all 0.3s ease;
+      }
+
+      .get-started-btn {
+        background-color: #000;
+        color: #fff;
+        margin-top: 10px;
+      }
+
+      .get-started-btn:hover {
+        background-image: linear-gradient(45deg, #ff6b00, #ff9900);
+        transform: scale(1.05);
+      }
+
+      .join-now-btn {
+        background-image: linear-gradient(45deg, #ff6b00, #ff9900);
+        color: #fff;
+        margin-bottom: 30px;
+      }
+
+      .join-now-btn:hover {
+        transform: scale(1.05);
+      }
+
+      .phases {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 2rem;
+        margin-bottom: 3rem;
+      }
+
+      .phase {
+        display: flexbox;
+        flex: 1;
+        min-width: 300px;
+        background-color: #fff;
+        padding: 1.5rem;
+        border-radius: 15px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+        border: 2px solid;
+        border-image: linear-gradient(45deg, #ff6b00, #ff9900) 1;
+        flex-direction: row;
+      }
+
+      .phase:hover {
+        transform: translateY(-5px);
+      }
+
+      .phase h3 {
+        margin-bottom: 1rem;
+        color: #333;
+      }
+
+      .extras {
+        background-color: #fff;
+        padding: 2rem;
+        border-radius: 15px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        font-size: 17px;
+      }
+
+      .extras p {
+        margin-bottom: 1rem;
+        color: #000000;
+      }
+
+      .extras h2 {
+        margin-bottom: 1rem;
+        color: #333;
+      }
+
+      .extras h3 {
+        margin-bottom: 1rem;
+        color: #333;
+      }
+
+      .extras ul {
+        list-style-type: none;
+        padding-left: 1rem;
+      }
+
+      .extras li {
+        margin-bottom: 0.5rem;
+        position: relative;
+      }
+
+      .extras li::before {
+        content: "•";
+        color: #ff6b00;
+        font-weight: bold;
+        display: inline-block;
+        width: 1em;
+        margin-left: -1em;
+      }
+
+      .follow {
+        background-color: #ff6b00;
+        padding: 2rem;
+
+        font-size: 17px;
+        margin: 0%;
+      }
+
+      .faq {
+        margin-top: 50px;
+        margin-bottom: 50px;
+      }
+
+      .faq-container {
+        max-width: 800px;
+        width: 100%;
+      }
+
+      .faq-title {
+        text-align: center;
+        margin-bottom: 2rem;
+        background: black;
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        font-size: 2.5rem;
+        font-weight: bold;
+      }
+
+      .faq-item {
+        margin-bottom: 1rem;
+        border-radius: 10px;
+        overflow: hidden;
+        background: linear-gradient(45deg, #ff8008, #ffa751);
+        box-shadow: 0 4px 15px rgba(212, 48, 3, 0.2);
+      }
+
+      .faq-question {
+        padding: 1.5rem;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: white;
+        font-weight: 600;
+        transition: all 0.3s ease;
+      }
+
+      .faq-question:hover {
+        background: linear-gradient(45deg, #ffa751, #ff8008);
+      }
+
+      .faq-answer {
+        max-height: 0;
+        overflow: hidden;
+        background: white;
+        transition: max-height 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        padding: 0 1.5rem;
+      }
+
+      .faq-answer p {
+        padding: 1.5rem 0;
+        color: #666;
+        line-height: 1.6;
+      }
+
+      .faq-question::after {
+        content: "+";
+        font-size: 1.5rem;
+        transition: transform 0.3s ease;
+      }
+
+      .faq-item.active .faq-question::after {
+        transform: rotate(45deg);
+      }
+
+      .faq-item.active .faq-answer {
+        max-height: 500px;
+      }
+
+      /* Bounce animation */
+      @keyframes bounce {
+        0%,
+        20%,
+        50%,
+        80%,
+        100% {
+          transform: translateY(0);
+        }
+        40% {
+          transform: translateY(-5px);
+        }
+        60% {
+          transform: translateY(-3px);
+        }
+      }
+
+      .faq-item.active {
+        animation: bounce 0.5s ease;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .faq-title {
+          font-size: 2rem;
+        }
+
+        .faq-question {
+          padding: 1rem;
+          font-size: 0.9rem;
+        }
+
+        .faq-answer p {
+          padding: 1rem 0;
+          font-size: 0.9rem;
+        }
+      }
+
+      .footer {
+        background-color: #333;
+        color: #fff;
+        text-align: center;
+        padding: 1rem;
+        margin-top: 2rem;
+      }
+
+      .back-to-top {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background-color: #000;
+        color: #fff;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-decoration: none;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      .back-to-top.visible {
+        opacity: 1;
+      }
+
+      @media (max-width: 1000px) {
+        .hero {
+          flex-direction: column;
+        }
+
+        .hero-image {
+          max-width: 100%;
+        }
+
+        .phases {
+          flex-direction: column;
+        }
+      }
+      .testimonial-section {
+        font-family: Arial, sans-serif;
+        background-color: white;
+
+        padding: 2rem;
+        border-radius: 15px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        font-size: 17px;
+        margin: 2rem auto;
+        overflow: hidden;
+      }
+      .testimonial-section h2 {
+        text-align: center;
+        color: #333;
+        font-size: 2rem;
+        margin-bottom: 1rem;
+      }
+      .carousel-container {
+        position: relative;
+        width: 100%;
+        height: 100px;
+        overflow: hidden;
+      }
+      .carousel {
+        display: flex;
+        transition: transform 0.5s ease-in-out;
+        height: 100%;
+      }
+      .carousel-item {
+        flex: 0 0 100%;
+        height: 100%;
+        width: 100%;
+        background-size: cover;
+        background-position: center;
+      }
+      .carousel-nav {
+        display: flex;
+        justify-content: center;
+        margin-top: 1rem;
+      }
+      .carousel-nav button {
+        background: #333;
+        color: white;
+        border: none;
+        padding: 0.5rem 1rem;
+        margin: 0 0.25rem;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+      .carousel-nav button:hover {
+        background-color: #555;
+      }
+      @keyframes slide {
+        0% {
+          transform: translateX(0);
+        }
+        100% {
+          transform: translateX(-900%);
+        }
+      }
+
+      /* Media query for desktop views */
+
+      @media screen and (min-width: 768px) {
+        .main-content {
+          max-width: 1200px;
+          margin: 100px auto 0;
+          padding: 2rem;
+
+          .hero {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 18px;
+            gap: 2rem;
+            margin-bottom: 3rem;
+            flex-direction: row;
+          }
+
+          .hero h1 {
+            font-size: 50px;
+          }
+
+          .testimonial-section {
+            max-width: 1200px;
+            margin: 2rem auto;
+          }
+          h2 {
+            font-size: 60px;
+          }
+          .carousel-container {
+            height: 400px;
+          }
+          .carousel-nav button {
+            padding: 0.75rem 1.5rem;
+          }
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar">
+      <img src="IMG_2468_prev_ui.png" alt="Logo" class="logo" />
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#learn-more">Learn More</a>
+        <a href="https://paystack.com/pay/n6hary-rbb" class="join-us-btn"
+          >Join Us Today</a
+        >
+      </div>
+      <div class="hamburger">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </div>
+    </nav>
+
+    <main class="main-content">
+      <section class="hero">
+        <div class="hero-text">
+          <h2>Transform Your Life in</h2>
+          <h1>90 Days</h1>
+          <p>
+            Achieve Lasting Success with Expert Guidance and Training on Life
+            Principles, Business, Finance, and Skill Development
+          </p>
+          <img
+            src="WhatsApp Image 2024-10-15 at 2.12.51 PM.jpeg"
+            alt="Transform Your Life"
+            class="hero-image"
+          />
+
+          <p>
+            Are you ready to make a meaningful change in your life? Our 90 Days
+            Transformation Program is designed to help you break through
+            limitations, shift your mindset, and achieve real, lasting results.
+            Whether you’re looking to improve your personal life, accelerate
+            your career, or build new skills, this program is tailored to equip
+            you with the tools and knowledge you need to succeed.
+          </p>
+          <div class="cta-buttons">
+            <a
+              href="https://paystack.com/pay/n6hary-rbb"
+              class="cta-btn get-started-btn"
+              >Get Started</a
+            >
+          </div>
+        </div>
+      </section>
+
+      <section class="testimonial-section">
+        <h2>Proven Success Methods</h2>
+        <p>
+          Our program has successfully transformed the lives of more than
+          hundreds of individuals, empowering them to create the life they’ve
+          always wanted.
+        </p>
+        <div class="carousel-container">
+          <div class="carousel" id="testimonialCarousel">
+            <div
+              class="carousel-item"
+              style="
+                background-image: url('6555a3d4-69b2-41c7-a6b1-71c5bef2ebd0.jpeg');
+              "
+            ></div>
+            <div
+              class="carousel-item"
+              style="
+                background-image: url('38642324-914d-4531-9e83-1e9c21360b43 (1).jpeg');
+              "
+            ></div>
+            <div
+              class="carousel-item"
+              style="
+                background-image: url('38642324-914d-4531-9e83-1e9c21360b43.jpeg');
+              "
+            ></div>
+            <div
+              class="carousel-item"
+              style="
+                background-image: url('WhatsApp\ Image\ 2024-10-15\ at\ 1.29.58\ PM.jpeg');
+              "
+            ></div>
+            <div
+              class="carousel-item"
+              style="
+                background-image: url('bdf148ba-556a-47a1-a9c9-31f9d34eb58e.jpeg');
+              "
+            ></div>
+            <div
+              class="carousel-item"
+              style="background-image: url('13.jpg')"
+            ></div>
+            <div
+              class="carousel-item"
+              style="background-image: url('16.jpg')"
+            ></div>
+            <div
+              class="carousel-item"
+              style="
+                background-image: url('WhatsApp\ Image\ 2024-10-15\ at\ 1.29.47\ PM.jpeg');
+              "
+            ></div>
+            <div
+              class="carousel-item"
+              style="
+                background-image: url('WhatsApp\ Image\ 2024-10-15\ at\ 1.29.48\ PM.jpeg');
+              "
+            ></div>
+          </div>
+        </div>
+        <div class="carousel-nav">
+          <button id="prevBtn">Previous</button>
+          <button id="nextBtn">Next</button>
+        </div>
+      </section>
+
+      <p>
+        Our 90-day program is structured to create a complete transformation in
+        three key areas:
+      </p>
+
+      <section class="phases">
+        <div class="phase">
+          <h3>Phase 1: Life Mastery (Days 1-30)</h3>
+          <p>
+            Build a solid foundation for success by understanding life's core
+            principles and overcoming obstacles
+          </p>
+        </div>
+        <div class="phase">
+          <h3>Phase 2: Business and Finance (Days 31-60)</h3>
+          <p>
+            Discover the secrets to financial freedom and building a prosperous
+            business.
+          </p>
+        </div>
+        <div class="phase">
+          <h3>Phase 3: Skill Acquisition (Days 61-90)</h3>
+          <p>
+            Learn powerful skills like Forex trading, copywriting, and social
+            media marketing to fuel your growth.
+          </p>
+        </div>
+      </section>
+
+      <div class="cta-buttons">
+        <a
+          href="https://paystack.com/pay/n6hary-rbb"
+          class="cta-btn join-now-btn"
+          >Join Now</a
+        >
+      </div>
+
+      <section class="extras">
+        <h2>What You’ll Get:</h2>
+        <h3>Expert Coaching and Mentorship:</h3>
+        <p>You would be coached by Binta Bulama, especially in this program.</p>
+        <h3>Program Extras</h3>
+        <p>Join our Program to unlock Exceptional Opportunities and access:</p>
+
+        <h3>Career Paths</h3>
+        <ul>
+          <li>
+            ⁠High-paying jobs in IT and finance for top-performing graduates
+            (First Class and Second Class Upper)
+          </li>
+          <li>⁠Recruitment opportunities with leading organizations</li>
+        </ul>
+
+        <h3>Global Connections</h3>
+        <ul>
+          <li>
+            Access international opportunities for career growth and success
+          </li>
+          <li>
+            ⁠Attend exclusive networking events to expand your professional
+            network
+          </li>
+        </ul>
+
+        <h3>Digital Visibility</h3>
+        <ul>
+          <li>Enhance your online presence through our vibrant community</li>
+          <li>Connect with like-minded professionals and industry leaders</li>
+        </ul>
+
+        <h3>More</h3>
+        <ul>
+          <li>Hands-On Training</li>
+          <li>Access to exclusive online community for networking</li>
+          <li>Personal mentorship opportunities</li>
+          <li>Lifetime access to course materials and updates</li>
+          <li>Certificate of completion</li>
+        </ul>
+      </section>
+
+      <section class="faq">
+        <div class="faq-container">
+          <h1 class="faq-title">Frequently Asked Questions</h1>
+
+          <div class="faq-item">
+            <div class="faq-question">How is the program delivered?</div>
+            <div class="faq-answer">
+              <p>
+                The program is a combination of online training, live sessions,
+                and personal coaching.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">Do I need prior experience to join?</div>
+            <div class="faq-answer">
+              <p>
+                No prior experience is needed. Our program is designed for
+                individuals at all levels of personal and professional
+                development.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">Who Is This Program For?</div>
+            <div class="faq-answer">
+              <p>
+                This program is ideal for anyone who: • Is ready to take control
+                of their life and achieve significant personal growth. • Wants
+                to master their finances and develop entrepreneurial skills. •Is
+                seeking to learn practical, high-demand skills like • Needs
+                guidance, structure, and accountability to stay on track and
+                achieve their goals.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">What kind of support will I receive?</div>
+            <div class="faq-answer">
+              <p>
+                You’ll have access to personal coaching, a support community,
+                and ongoing guidance throughout the program.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              What does the Hands-On Training entail
+            </div>
+            <div class="faq-answer">
+              <p>
+                From business strategies to technical skills like forex trading,
+                we provide actionable training that you can immediately apply.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="follow">
+        <div>"follow-our-channel"</div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>&copy; 2024 The Money Magnet. All rights reserved.</p>
+    </footer>
+
+    <a href="#" class="back-to-top">↑</a>
+
+    <script>
+      // Hamburger menu functionality
+      const hamburger = document.querySelector(".hamburger");
+      const navLinks = document.querySelector(".nav-links");
+
+      hamburger.addEventListener("click", () => {
+        navLinks.classList.toggle("active");
+        hamburger.classList.toggle("active");
+      });
+
+      // Smooth scroll for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          document.querySelector(this.getAttribute("href")).scrollIntoView({
+            behavior: "smooth",
+          });
+        });
+      });
+
+      // Back to top button functionality
+      const backToTopButton = document.querySelector(".back-to-top");
+
+      window.addEventListener("scroll", () => {
+        if (window.pageYOffset > 300) {
+          backToTopButton.classList.add("visible");
+        } else {
+          backToTopButton.classList.remove("visible");
+        }
+      });
+
+      backToTopButton.addEventListener("click", (e) => {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
+
+      // Button click animation
+      const buttons = document.querySelectorAll(".cta-btn");
+      buttons.forEach((button) => {
+        button.addEventListener("click", function (e) {
+          // e.preventDefault();
+          this.classList.add("clicked");
+          setTimeout(() => {
+            this.classList.remove("clicked");
+          }, 300);
+        });
+      });
+
+      //for the testimonial-section
+
+      const carousel = document.getElementById("testimonialCarousel");
+      const items = carousel.children;
+      const totalItems = items.length;
+      let currentIndex = 0;
+      let isAutoSliding = true;
+      let autoSlideInterval;
+
+      function moveToNextSlide() {
+        currentIndex = (currentIndex + 1) % totalItems;
+        updateCarousel();
+      }
+
+      function moveToPrevSlide() {
+        currentIndex = (currentIndex - 1 + totalItems) % totalItems;
+        updateCarousel();
+      }
+
+      function updateCarousel() {
+        carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
+      }
+
+      function startAutoSlide() {
+        if (!isAutoSliding) {
+          isAutoSliding = true;
+          autoSlideInterval = setInterval(moveToNextSlide, 5000); // Change slide every 5 seconds
+        }
+      }
+
+      function stopAutoSlide() {
+        if (isAutoSliding) {
+          isAutoSliding = false;
+          clearInterval(autoSlideInterval);
+        }
+      }
+
+      // Event listeners for manual navigation
+      document.getElementById("nextBtn").addEventListener("click", () => {
+        stopAutoSlide();
+        moveToNextSlide();
+      });
+
+      document.getElementById("prevBtn").addEventListener("click", () => {
+        stopAutoSlide();
+        moveToPrevSlide();
+      });
+
+      // Start auto-slide on page load
+      startAutoSlide();
+
+      // Restart auto-slide after manual interaction
+      carousel.addEventListener("transitionend", () => {
+        if (!isAutoSliding) {
+          startAutoSlide();
+        }
+      });
+
+      document.querySelectorAll(".faq-question").forEach((question) => {
+        question.addEventListener("click", () => {
+          // Remove active class from all other items
+          document.querySelectorAll(".faq-item").forEach((item) => {
+            if (item !== question.parentElement) {
+              item.classList.remove("active");
+            }
+          });
+
+          // Toggle active class on clicked item
+          const faqItem = question.parentElement;
+          faqItem.classList.toggle("active");
+
+          // Reset animation
+          if (faqItem.classList.contains("active")) {
+            faqItem.style.animation = "none";
+            faqItem.offsetHeight; // Trigger reflow
+            faqItem.style.animation = "bounce 0.5s ease";
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
