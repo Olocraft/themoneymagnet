@@ -964,6 +964,21 @@
           }
         });
       });
+
+      function
+      redirectToWhatsAppAfterPayment()  {
+        const paymentLink =
+        'https://paystack.com/pay/n6hary-rbb';
+
+          // Open the paystack paymentLink
+          window.open(paymentLink,'_blank');
+
+          // Assuming successful payment, redirect to whatsapp
+          // This could be triggered by a listener or callback from your backend
+          window.location.href=
+          'https://chat.whatsapp.com/CiBAl2Tox8255Z5iP8G5hn?
+          text=Thank%20you%20for%20your%20payment!';
+      }
     </script>
   </body>
 </html>
